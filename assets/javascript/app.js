@@ -1,13 +1,18 @@
 //creating a 30 seconds timer first
-var time=1;
+var time=30;
 var intervalId;
 function myTimer()
 {
-$("p").html(time++);
-if(time>30)
+$("p").html(time--);
+if(time<0)
 {
-    clearInterval(intervalId);
+    reset();
 }
+}
+function reset()
+{
+    time=30;
+
 }
 intervalId = setInterval(myTimer,1000);
-
+//creating a reset function
