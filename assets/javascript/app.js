@@ -17,11 +17,15 @@ var questionaireObject = {
 var time=5;
 var intervalId;
 var i=0;
+var correctAnswer;
+var correct=0;
+var incorrect=0;
+var unanswered=0;
 function myTimer()
 {
     if(time === 5)
     {
-        displayQuestion(i);
+        initiateDisplay(i);
         i++;
         //if questions are over then clock should stop  or 
         if(i>questionaireObject.questions.length)
@@ -35,7 +39,6 @@ $("p").html(time--);
 if(time<0)
 {
     reset();
-    
 }
 }
 //creating a reset function
@@ -48,10 +51,14 @@ function stop()
 {
     clearInterval(intervalId);
 }
-intervalId = setInterval(myTimer,1000);
+function settingInterval()
+{
+    intervalId = setInterval(myTimer,1000);
+}
+settingInterval();
 
 //creating a function that displays question
-function displayQuestion(j)
+function initiateDisplay(j)
 {
         var q1=questionaireObject.questions[j];
         $("div").empty();
@@ -59,29 +66,66 @@ function displayQuestion(j)
         {
             var answers={
                 q1 : [4,5,6,7],}
-             displayAnswers(q1,answers.q1);
-            
+                correctAnswer=6;  
+                displayQuestionAnswers(q1,answers.q1,correctAnswer);
         }
         if(j===1)
         {
             var answers={
                 q1 : [6,7,4,8],}
-                displayAnswers(q1,answers.q1);
+                correctAnswer=4;
+                displayQuestionAnswers(q1,answers.q1,correctAnswer);
+              //  correctAnswer=4;
+              
+
         }
         if(j===2)
         {
             var answers={
                 q1 : [6,7,4,8],}
-                displayAnswers(q1,answers.q1);
+                displayQuestionAnswers(q1,answers.q1);
+
         }
 
 }
-function displayAnswers(quest,q)
+function displayQuestionAnswers(quest,q,ca)
 {
     $("div").append(quest+"<br>");
     for(var i =0;i<q.length;i++)
     {
-        var rbtn = $("<input type='radio'/>"+q[i]+"<br>");
+        var rbtn = $("<input type='radio'name='answerOptions' value=" +q[i]+">"+q[i]+"<br>");
         $("div").append(rbtn);
     }
+    var btn=$("<button id='button1'>");
+    btn.text("Submit");
+    $("div").append(btn);
+     
+    $(btn).on("click",function()
+             {
+                 console.log("Entered the click");
+                 console.log(ca);
+                 var radioValue= $('input[name=answerOptions]:checked').val(); 
+                 console.log(radioValue);
+                 if(parseInt(radioValue)===ca)
+                 {
+                     correct++;
+                     console.log("Correct:"+correct);
+                 }
+                 else if((radioValue!==ca) && ( typeof radioValue!=="undefined"))
+                 {
+                     incorrect++;
+                     console.log("incorrect"+incorrect);
+                 }
+                 else if(typeof radioValue === "undefined")
+                 {
+                     unanswered++;
+                     console.log("unanswered"+unanswered);
+                 }
+                 reset();
+             })
+    
 }
+
+
+    
+
