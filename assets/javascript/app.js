@@ -10,7 +10,14 @@
 //How to fulfill the requirements
 // For questions create an object that will have array of quesions
 //how to associate 4 answers to one question
+var correctImagesArray=["./assets/images/correct1.gif","./assets/images/correct2.gif",
+"./assets/images/correct3.gif","./assets/images/correct4.gif","./assets/images/correct5.gif",
+"./assets/images/correct6.gif","./assets/images/correct6.gif"];
+var incorrectImagesArray=["./assets/images/incorrect1.gif","./assets/images/incorrect2.gif",
+"./assets/images/incorrect3.gif","./assets/images/incorrect4.gif","./assets/images/incorrect5.gif"
+,"./assets/images/incorrect6.gif","./assets/images/incorrect7.gif"];
 var aud = $("#myAudio");
+//object with questions property as an array of questions
 var questionaireObject = {
     questions:["the Group has how many friends","the Group has how many friends1","the Group has how many friends2"],
 }
@@ -27,6 +34,7 @@ $("#startButton1").on("click",function()
 {
     console.log("Document loaded");
     $("#mainDiv").hide();
+    $("#imageDiv").hide();
     $("#childDiv").show();
     $("p").show();
     $("body").css( "background-image" ,"url('./assets/images/friendsBackground.jpeg')");
@@ -56,17 +64,19 @@ function myTimer()
         }
     }
     
-$("p").html(time--);
+$("p").html("Time Remaining :"+ " "+time--);
 // resets the clock if time becomes 0 seconds or user gives the clicks the answer
 if(time<0)
 {
     reset();
+    
 }
 }
 //creating a reset function
 function reset()
 {
     time=5;
+    
 }
 //creating a stop function
 function stop()
@@ -83,7 +93,9 @@ function settingInterval()
 function initiateDisplay(j)
 {
         var q1=questionaireObject.questions[j];
-        $("#childDiv").empty();
+        $("#childDiv").empty();    
+        $("#childDiv").show(); 
+        $("#imageDiv").hide(); 
         if(j===0)
         {
             var answers={
@@ -124,19 +136,57 @@ function displayQuestionAnswers(quest,q,ca)
      
     $(btn).on("click",function()
              {
+                 var correctOptionImage=correctImagesArray[Math.floor(Math.random()*correctImagesArray.length)];
+                 var incorrectOptionImage=incorrectImagesArray[Math.floor(Math.random()*incorrectImagesArray.length)];
+                 console.log(correctOptionImage);
+                 console.log(incorrectImagesArray);
                  console.log("Entered the click");
                  console.log(ca);
+                 var img1=$("<img>");
+                 console.log(img1);
                  var radioValue= $('input[name=answerOptions]:checked').val(); 
                  console.log(radioValue);
-                 if(parseInt(radioValue)===ca)
+                 if(typeof ca === "number" )
                  {
+                    radioValue=parseInt(radioValue);
+                 }
+                 if(radioValue===ca)
+                 {
+                    stop();
                      correct++;
                      console.log("Correct:"+correct);
+                     $("#childDiv").hide();
+                     img1.attr("src",correctOptionImage);
+                     img1.attr("width","500px");
+                     img1.attr("height","300px");
+                     $("#imageDiv").empty();
+                     var message=$("<h1>Correct!!</h1>");
+                     console.log(message);
+                     $("#imageDiv").html(message);
+                     $("#imageDiv").append(img1);
+                     $("#imageDiv").show();
+                     console.log("Image shown");
+                     setTimeout(settingInterval,3000);
+                     
                  }
                  else if((radioValue!==ca) && ( typeof radioValue!=="undefined"))
                  {
+                    stop();
                      incorrect++;
                      console.log("incorrect"+incorrect);
+                     $("#childDiv").hide();
+                     img1.attr("src",incorrectOptionImage);
+                     img1.attr("width","500px");
+                     img1.attr("height","300px");
+                     $("#imageDiv").empty();
+                     var message=$("<h1>Incorrect!! The correct answer is :"+ca+"</h1>");
+                     console.log(message);
+                     $("#imageDiv").html(message);
+                     $("#imageDiv").append(img1);
+                     $("#imageDiv").show();
+                     setTimeout(settingInterval,3000);
+                     
+                     
                  }
                  else if(typeof radioValue === "undefined")
                  {

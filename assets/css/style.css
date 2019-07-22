@@ -42,3 +42,12 @@ p{
     margin-left: 450px;
     margin-right:auto;
 }
+#imageDiv
+{
+    display: none;
+    margin-top:60px;
+    margin-left:500px;
+    margin-right:auto;
+   
+   
+}
