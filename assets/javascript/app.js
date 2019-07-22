@@ -10,6 +10,7 @@
 //How to fulfill the requirements
 // For questions create an object that will have array of quesions
 //how to associate 4 answers to one question
+var aud = $("#myAudio");
 var questionaireObject = {
     questions:["the Group has how many friends","the Group has how many friends1","the Group has how many friends2"],
 }
@@ -21,6 +22,27 @@ var correctAnswer;
 var correct=0;
 var incorrect=0;
 var unanswered=0;
+var timeOut;
+$("#startButton1").on("click",function()
+{
+    console.log("Document loaded");
+    $("#mainDiv").hide();
+    $("#childDiv").show();
+    $("p").show();
+    $("body").css( "background-image" ,"url('./assets/images/friendsBackground.jpeg')");
+    $("body").css( "background-repeat" ,"no-repeat");
+    $("body").css( "background-attachment" ,"fixed");    
+    $("body").css( "background-position" ,"center");
+    $("body").css( "background-size" ,"cover");
+    timeOut=setTimeout(initialSetup,5300);
+    aud.get(0).play();
+   
+});
+function initialSetup()
+{
+    settingInterval();
+    aud.get(0).pause();
+}
 function myTimer()
 {
     if(time === 5)
@@ -55,13 +77,13 @@ function settingInterval()
 {
     intervalId = setInterval(myTimer,1000);
 }
-settingInterval();
+
 
 //creating a function that displays question
 function initiateDisplay(j)
 {
         var q1=questionaireObject.questions[j];
-        $("div").empty();
+        $("#childDiv").empty();
         if(j===0)
         {
             var answers={
@@ -90,15 +112,15 @@ function initiateDisplay(j)
 }
 function displayQuestionAnswers(quest,q,ca)
 {
-    $("div").append(quest+"<br>");
+     $("#childDiv").append(quest+"<br>");
     for(var i =0;i<q.length;i++)
     {
         var rbtn = $("<input type='radio'name='answerOptions' value=" +q[i]+">"+q[i]+"<br>");
-        $("div").append(rbtn);
+        $("#childDiv").append(rbtn);
     }
     var btn=$("<button id='button1'>");
     btn.text("Submit");
-    $("div").append(btn);
+    $("#childDiv").append(btn);
      
     $(btn).on("click",function()
              {

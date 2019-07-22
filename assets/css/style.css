@@ -1,0 +1,44 @@
+body
+{
+    background: url('../images/trivia.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+#startButton1
+{
+    background-color: white;
+    color:black;
+    width:500px;
+    height: 30px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:25px;
+}
+p{
+   display: none;
+    margin-top: 140px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+}
+#childDiv{
+   display: none;
+    margin-top:-40px;
+    margin-left:auto;
+    margin-right:auto;
+    width: 30%;
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+#mainDiv
+{
+    display:inline-block;
+    margin-top: 500px;
+    margin-left: 450px;
+    margin-right:auto;
+}
