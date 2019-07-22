@@ -15,7 +15,7 @@ body
 }
 p{
    display: none;
-    margin-top: 140px;
+    margin-top: 180px;
     margin-left:auto;
     margin-right:auto;
     text-align: center;
@@ -47,7 +47,11 @@ p{
     display: none;
     margin-top:60px;
     margin-left:500px;
-    margin-right:auto;
-   
-   
+    margin-right:auto; 
+}
+#resultDiv
+{
+    margin-top:60px;
+    margin-left:500px;
+    margin-right:auto; 
 }

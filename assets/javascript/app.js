@@ -44,7 +44,6 @@ $("#startButton1").on("click",function()
     $("body").css( "background-size" ,"cover");
     timeOut=setTimeout(initialSetup,5300);
     aud.get(0).play();
-   
 });
 function initialSetup()
 {
@@ -61,6 +60,18 @@ function myTimer()
         if(i>questionaireObject.questions.length)
         {
             stop();
+            $("#imageDiv").hide();
+            $("#childDiv").hide();
+            var overMessage=$("<h1> All Done here's how you did</h1>");
+            $("#resultDiv").html(overMessage);
+            var correctResult=$("<h2>Correct Answers:"+" "+correct+"</h2>");
+            $("#resultDiv").append(correctResult);
+            var incorrectResult=$("<h2>InCorrect Answers:"+" "+incorrect+"</h2>");
+            $("#resultDiv").append(incorrectResult);
+            var unansweredResult=$("<h2>Unanswered :"+" "+unanswered+"</h2>");
+            $("#resultDiv").append(unansweredResult);
+            var startOverButton = $("<button id='startOverButton'>");
+            $("#resultDiv").append(startOverButton);
         }
     }
     
@@ -69,7 +80,6 @@ $("p").html("Time Remaining :"+ " "+time--);
 if(time<0)
 {
     reset();
-    
 }
 }
 //creating a reset function
@@ -99,15 +109,15 @@ function initiateDisplay(j)
         if(j===0)
         {
             var answers={
-                q1 : [4,5,6,7],}
-                correctAnswer=6;  
+                q1 : ["4","5","6","7"],}
+                correctAnswer="6";  
                 displayQuestionAnswers(q1,answers.q1,correctAnswer);
         }
         if(j===1)
         {
             var answers={
-                q1 : [6,7,4,8],}
-                correctAnswer=4;
+                q1 : ["6","7","4","8"],}
+                correctAnswer="4";
                 displayQuestionAnswers(q1,answers.q1,correctAnswer);
               //  correctAnswer=4;
               
@@ -116,8 +126,10 @@ function initiateDisplay(j)
         if(j===2)
         {
             var answers={
-                q1 : [6,7,4,8],}
-                displayQuestionAnswers(q1,answers.q1);
+                q1 : ["6","7","4","8"],}
+                correctAnswer="8";
+                displayQuestionAnswers(q1,answers.q1,correctAnswer);
+                
 
         }
 
@@ -146,10 +158,10 @@ function displayQuestionAnswers(quest,q,ca)
                  console.log(img1);
                  var radioValue= $('input[name=answerOptions]:checked').val(); 
                  console.log(radioValue);
-                 if(typeof ca === "number" )
-                 {
-                    radioValue=parseInt(radioValue);
-                 }
+                //  if(typeof ca === "number" )
+                //  {
+                //     radioValue=parseInt(radioValue);
+                //  }
                  if(radioValue===ca)
                  {
                     stop();
@@ -166,10 +178,28 @@ function displayQuestionAnswers(quest,q,ca)
                      $("#imageDiv").append(img1);
                      $("#imageDiv").show();
                      console.log("Image shown");
-                     setTimeout(settingInterval,3000);
+                     setTimeout(settingInterval,1000);
                      
                  }
-                 else if((radioValue!==ca) && ( typeof radioValue!=="undefined"))
+                 else if(radioValue === undefined)
+                 {
+                     console.log("Enter undefined");
+                    stop();
+                    $("#childDiv").hide();
+                    img1.attr("src",incorrectOptionImage);
+                    img1.attr("width","500px");
+                    img1.attr("height","300px");
+                    $("#imageDiv").empty();
+                    var message=$("<h1>You didn't answer!!</h1>");
+                    console.log(message);
+                    $("#imageDiv").html(message);
+                    $("#imageDiv").append(img1);
+                    $("#imageDiv").show();
+                    setTimeout(settingInterval,1000);
+                     unanswered++;
+                     console.log("unanswered"+unanswered);
+                 }
+                 else if(radioValue!==ca)
                  {
                     stop();
                      incorrect++;
@@ -184,14 +214,7 @@ function displayQuestionAnswers(quest,q,ca)
                      $("#imageDiv").html(message);
                      $("#imageDiv").append(img1);
                      $("#imageDiv").show();
-                     setTimeout(settingInterval,3000);
-                     
-                     
-                 }
-                 else if(typeof radioValue === "undefined")
-                 {
-                     unanswered++;
-                     console.log("unanswered"+unanswered);
+                     setTimeout(settingInterval,1000);  
                  }
                  reset();
              })
