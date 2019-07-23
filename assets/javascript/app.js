@@ -19,7 +19,12 @@ var incorrectImagesArray=["./assets/images/incorrect1.gif","./assets/images/inco
 var aud = $("#myAudio");
 //object with questions property as an array of questions
 var questionaireObject = {
-    questions:["the Group has how many friends","the Group has how many friends1","the Group has how many friends2"],
+    questions:["What is Rachel's surname?","What is the name of the coffee house?",
+    "Select one of the designer rachel works for?",
+    "What is Chandler's job?","What is Phoebe's sister name?","Where do Phoebe and Mike get married?",
+    "Who plays 'Will', an old friend of Monica and Ross?","What's chandler middle name?",
+    "What does Monica's dad give her to compensate ruining her childhood possesions? ",
+    "What is the name of Joey's mother?"],
 }
 //creating a 30 seconds timer first
 var time=5;
@@ -30,21 +35,25 @@ var correct=0;
 var incorrect=0;
 var unanswered=0;
 var timeOut;
-$("#startButton1").on("click",function()
-{
-    console.log("Document loaded");
-    $("#mainDiv").hide();
-    $("#imageDiv").hide();
-    $("#childDiv").show();
-    $("p").show();
-    $("body").css( "background-image" ,"url('./assets/images/friendsBackground.jpeg')");
-    $("body").css( "background-repeat" ,"no-repeat");
-    $("body").css( "background-attachment" ,"fixed");    
-    $("body").css( "background-position" ,"center");
-    $("body").css( "background-size" ,"cover");
-    timeOut=setTimeout(initialSetup,5300);
-    aud.get(0).play();
-});
+
+    $("#startButton1").on("click",function()
+    {
+        console.log("Document loaded");
+        $("#mainDiv").hide();
+        $("#imageDiv").hide();
+        $("#childDiv").show();
+        $("p").show();
+        $("body").css( "background-image" ,"url('./assets/images/friendsBackground.jpeg')");
+        $("body").css( "background-repeat" ,"no-repeat");
+        $("body").css( "background-attachment" ,"fixed");    
+        $("body").css( "background-position" ,"center");
+        $("body").css( "background-size" ,"cover");
+        timeOut=setTimeout(initialSetup,5300);
+        aud.get(0).play();
+    });
+
+
+
 function initialSetup()
 {
     settingInterval();
@@ -70,8 +79,12 @@ function myTimer()
             $("#resultDiv").append(incorrectResult);
             var unansweredResult=$("<h2>Unanswered :"+" "+unanswered+"</h2>");
             $("#resultDiv").append(unansweredResult);
-            var startOverButton = $("<button id='startOverButton'>");
+            var startOverButton = $("<button id='startOverButton'>Start Over?</button>");
             $("#resultDiv").append(startOverButton);
+            $("#startOverButton").on("click",function()
+            {
+                location.reload(true);
+            });
         }
     }
     
@@ -109,15 +122,15 @@ function initiateDisplay(j)
         if(j===0)
         {
             var answers={
-                q1 : ["4","5","6","7"],}
-                correctAnswer="6";  
+                q1 : ["Green","Blue","Bing","Karen"],}
+                correctAnswer="Green";  
                 displayQuestionAnswers(q1,answers.q1,correctAnswer);
         }
         if(j===1)
         {
             var answers={
-                q1 : ["6","7","4","8"],}
-                correctAnswer="4";
+                q1 : ['Central Perk','Central Park','Starbucks','Barista'],}
+                correctAnswer="Central Perk";
                 displayQuestionAnswers(q1,answers.q1,correctAnswer);
               //  correctAnswer=4;
               
@@ -126,11 +139,62 @@ function initiateDisplay(j)
         if(j===2)
         {
             var answers={
-                q1 : ["6","7","4","8"],}
-                correctAnswer="8";
+                q1 : ["Gucci","BloomingDales","Ralph Lauren","Manish Malhotra"],}
+                correctAnswer="Ralph Lauren";
                 displayQuestionAnswers(q1,answers.q1,correctAnswer);
                 
 
+        }
+        if(j===3)
+        {
+            var answers={
+                q1 : ["Chef","Transponster","Doctor","Statistical Analysis and Data Reconfiguration"],}
+                correctAnswer="Statistical Analysis and Data Reconfiguration";
+                displayQuestionAnswers(q1,answers.q1,correctAnswer);
+                
+
+        }
+        if(j===4)
+        {
+            var answers={
+                q1 : ["Pamela","Ursula","Kristina","Regina"],}
+                correctAnswer="Ursula";
+                displayQuestionAnswers(q1,answers.q1,correctAnswer);
+        }
+        if(j===5)
+        {
+            var answers={
+                q1 : ["Street","London","Vegas","Chapel"],}
+                correctAnswer="Street";
+                displayQuestionAnswers(q1,answers.q1,correctAnswer);
+        }
+        if(j===6)
+        {
+            var answers={
+                q1 : ["Bruce Wills","Tom Cruise","Brad Pitt","Will Smith"],}
+                correctAnswer="Brad Pitt";
+                displayQuestionAnswers(q1,answers.q1,correctAnswer);
+        }
+        if(j===7)
+        {
+            var answers={
+                q1 : ["Muriel","Karen","Francis","Pamela"],}
+                correctAnswer="Muriel";
+                displayQuestionAnswers(q1,answers.q1,correctAnswer);
+        }
+        if(j===8)
+        {
+            var answers={
+                q1 : ["Porsche","Dog","Cat","House"],}
+                correctAnswer="Porsche";
+                displayQuestionAnswers(q1,answers.q1,correctAnswer);
+        }
+        if(j===9)
+        {
+            var answers={
+                q1 : ["Gloria","Sandra","Judy","Ronnie"],}
+                correctAnswer="Gloria";
+                displayQuestionAnswers(q1,answers.q1,correctAnswer);
         }
 
 }

@@ -5,7 +5,7 @@ body
 }
 #startButton1
 {
-    background-color: white;
+    background-color:white;
     color:black;
     width:500px;
     height: 30px;
@@ -51,7 +51,28 @@ p{
 }
 #resultDiv
 {
+    display: none;
     margin-top:60px;
     margin-left:500px;
     margin-right:auto; 
+}
+#button1
+{
+    background-color:white;
+    color:black;
+    width:200px;
+    height: 30px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:25px;
+}
+#startOverButton
+{
+    background-color:white;
+    color:black;
+    width:250px;
+    height: 30px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:25px;
 }
