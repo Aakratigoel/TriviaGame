@@ -22,57 +22,71 @@ p{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 40px;
     font-weight: bold;
-    color: black;
+    color:darkblue;
+
+
 }
 #childDiv{
+    color:gold;
    display: none;
     margin-top:-40px;
-    margin-left:auto;
+    margin-left:525px;
     margin-right:auto;
-    width: 30%;
+    width: 60%;
     text-align: left;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 25px;
+    font-weight: bolder;
+    font-style:italic;
 }
 #mainDiv
 {
+    position: fixed;
+    left:500px;
+    top:525px;
     display:inline-block;
-    margin-top: 500px;
-    margin-left: 450px;
-    margin-right:auto;
+    width:500px;
+    height:40px;
+   
 }
 #imageDiv
 {
     display: none;
-    margin-top:60px;
+    margin-top:15px;
     margin-left:500px;
     margin-right:auto; 
+    color:darkblue;
+    font-style: italic;
 }
 #resultDiv
 {
     display: none;
-    margin-top:60px;
-    margin-left:500px;
+    margin-top:30px;
+    margin-left:525px;
     margin-right:auto; 
+    color:palevioletred;
+    font-style:italic;
+    font-size:25px;
 }
 #button1
 {
-    background-color:white;
-    color:black;
+    background-color:darkblue;
+    color:white;
     width:200px;
     height: 30px;
     font-weight: bold;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size:25px;
+    font-size:20px;
+    font-style: italic;
 }
 #startOverButton
 {
-    background-color:white;
-    color:black;
+    background-color:darkblue;
+    color:white;
     width:250px;
     height: 30px;
     font-weight: bold;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size:25px;
+    font-size:22px;
+    font-style: italic;
 }
