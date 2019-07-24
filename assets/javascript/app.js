@@ -26,8 +26,8 @@ var questionaireObject = {
         "What does Monica's dad give her to compensate ruining her childhood possesions? ",
         "What is the name of Joey's mother?"],
 }
-//creating a 30 seconds timer first
-var time = 5;
+//creating a 20 seconds timer first
+var time = 20;
 var intervalId;
 var i = 0;
 var correctAnswer;
@@ -39,7 +39,7 @@ var btn;
 $("#resultDiv").hide();
 $("#imageDiv").hide();
 $("#childDiv").hide();
-
+$("#justImage1").hide();
 $("#startButton1").on("click", function () {
     console.log("Document loaded");
     $("#mainDiv").hide();
@@ -47,7 +47,7 @@ $("#startButton1").on("click", function () {
     $("#imageDiv").hide();
     $("#childDiv").show();
     $("p").show();
-    $("body").css("background-image", "url('./assets/images/backImage2.gif')");
+    $("body").css("background-image", "url('./assets/images/friendsIntro.gif')");
     $("body").css("background-repeat", "no-repeat");
     $("body").css("background-attachment", "fixed");
     $("body").css("background-position", "center");
@@ -61,14 +61,16 @@ $("#startButton1").on("click", function () {
 function initialSetup() {
     settingInterval();
     aud.get(0).pause();
-    $("body").css("background-image", "url('./assets/images/backImage.png')");
-    $("body").css("background-repeat", "no-repeat");
-    $("body").css("background-attachment", "fixed");
-    $("body").css("background-position", "center");
-    $("body").css("background-size", "cover");
+    $("#justImage1").show();
+    $("body").css("background-image", "none");
+    // $("body").css("background-image", "url('./assets/images/bgimage.png')");
+    // $("body").css("background-repeat", "no-repeat");
+    // $("body").css("background-attachment", "fixed");
+    // $("body").css("background-position", "center");
+    // $("body").css("background-size", "cover");
 }
 function myTimer() {
-    if (time === 5) {
+    if (time === 20) {
         initiateDisplay(i);
         i++;
         //if questions are over then clock should stop  or 
@@ -96,13 +98,17 @@ function myTimer() {
     $("p").html("Time Remaining :" + " " + time-- + "<br><br>");
     // resets the clock if time becomes 0 seconds or user gives the clicks the answer
     if (time < 0) {
+        if (!(btn).data("clicked")) {
+            unanswered++;
+        }
         reset();
 
     }
+
 }
 //creating a reset function
 function reset() {
-    time = 5;
+    time = 20;
 
 }
 //creating a stop function
@@ -221,14 +227,14 @@ function displayQuestionAnswers(quest, q, ca) {
         console.log(img1);
         var radioValue = $('input[name=answerOptions]:checked').val();
         console.log(radioValue);
-        if (radioValue === ca) {
+        if (radioValue === ca && time >= 0) {
             stop();
             correct++;
             console.log("Correct:" + correct);
             $("#childDiv").hide();
             img1.attr("src", correctOptionImage);
-            img1.attr("width", "500px");
-            img1.attr("height", "300px");
+            img1.attr("width", "300px");
+            img1.attr("height", "250px");
             $("#imageDiv").empty();
             var message = $("<h1>Correct!!</h1>");
             console.log(message);
@@ -244,8 +250,8 @@ function displayQuestionAnswers(quest, q, ca) {
             stop();
             $("#childDiv").hide();
             img1.attr("src", incorrectOptionImage);
-            img1.attr("width", "500px");
-            img1.attr("height", "300px");
+            img1.attr("width", "300px");
+            img1.attr("height", "250px");
             $("#imageDiv").empty();
             var message = $("<h1>You didn't answer!!</h1>");
             console.log(message);
@@ -256,14 +262,14 @@ function displayQuestionAnswers(quest, q, ca) {
             unanswered++;
             console.log("unanswered" + unanswered);
         }
-        else if (radioValue !== ca) {
+        else if (radioValue !== ca && time >= 0) {
             stop();
             incorrect++;
             console.log("incorrect" + incorrect);
             $("#childDiv").hide();
             img1.attr("src", incorrectOptionImage);
-            img1.attr("width", "500px");
-            img1.attr("height", "300px");
+            img1.attr("width", "300px");
+            img1.attr("height", "250px");
             $("#imageDiv").empty();
             var message = $("<h1>Incorrect!! The correct answer is :" + ca + "</h1>");
             console.log(message);

@@ -14,24 +14,27 @@ body
     font-size:25px;
 }
 p{
+    position: fixed;
+    top:250px;
+    left:460px;
    display: none;
-    margin-top: 180px;
-    margin-left:auto;
-    margin-right:auto;
+    /* margin-top: 180px;
+    margin-left:700px;
+    margin-right:auto; */
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 40px;
     font-weight: bold;
     color:darkblue;
-
+    width:500px;
 
 }
 #childDiv{
+    position: fixed;
+    top:350px;
+    left:500px;
     color:gold;
    display: none;
-    margin-top:-40px;
-    margin-left:525px;
-    margin-right:auto;
     width: 60%;
     text-align: left;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -51,20 +54,20 @@ p{
 }
 #imageDiv
 {
+    position: fixed;
+    top:350px;
+    left:500px;
     display: none;
-    margin-top:15px;
-    margin-left:500px;
-    margin-right:auto; 
-    color:darkblue;
+    color:red;
     font-style: italic;
 }
 #resultDiv
 {
+    position: fixed;
+    top:350px;
+    left:525px;
     display: none;
-    margin-top:30px;
-    margin-left:525px;
-    margin-right:auto; 
-    color:palevioletred;
+    color:yellow;
     font-style:italic;
     font-size:25px;
 }
@@ -89,4 +92,15 @@ p{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size:22px;
     font-style: italic;
+}
+#justImage1
+{
+    position:fixed;
+    top:0px;
+    left:400px;
+    background-image: url("../images/bgimage.png");
+    display:none;
+    width:450px;
+    height: 280px;
+
 }
