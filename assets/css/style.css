@@ -33,7 +33,7 @@ p{
     position: fixed;
     top:350px;
     left:500px;
-    color:gold;
+    color:darkmagenta;
    display: none;
     width: 60%;
     text-align: left;
@@ -67,7 +67,7 @@ p{
     top:350px;
     left:525px;
     display: none;
-    color:yellow;
+    color:darkmagenta;
     font-style:italic;
     font-size:25px;
 }
